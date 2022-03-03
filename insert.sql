@@ -1,0 +1,1 @@
+INSERT INTO article5 (kumikan,noukamei, byoumei, kingaku, day) VALUES (13, '高橋昌也ta', '急性乳房炎', 120001, '2021-10-21');

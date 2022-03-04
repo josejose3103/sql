@@ -14,3 +14,6 @@ SELECT number, byoumei, kingaku FROM article6 WHERE day BETWEEN '2022-01-11' AND
   SELECT 日時, 損坊内容, 金額 FROM article7 WHERE 日時 BETWEEN '2021-11-30' AND '2022-01-31' AND 組勘番号 = '12'; 
   SELECT 農家名,SUM(金額) FROM article7 WHERE 日時 BETWEEN '2021-11-30' AND '2022-01-31' GROUP BY 農家名 ORDER BY 組勘番号;
    SELECT * FROM table4 WHERE personalID = '1417018169'INTO OUTFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/1121.csv' CHARACTER SET 'sjis' FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"';
+   SELECT DATE_FORMAT(day, '%Y') as Y, sum(金額), 農家名  FROM article6 GROUP by DATE_FORMAT(day, '%Y'), 農家名;
+   SELECT DATE_FORMAT(日時, '%Y') as Y, sum(金額), 農家名  FROM article7 GROUP by DATE_FORMAT(日時, '%Y'), 農家名
+   SELECT DATE_FORMAT(日時, '%Y') as Y, sum(金額) FROM article7 GROUP by DATE_FORMAT(日時, '%Y');

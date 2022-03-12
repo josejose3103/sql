@@ -17,3 +17,7 @@ SELECT number, byoumei, kingaku FROM article6 WHERE day BETWEEN '2022-01-11' AND
    SELECT DATE_FORMAT(day, '%Y') as Y, sum(金額), 農家名  FROM article6 GROUP by DATE_FORMAT(day, '%Y'), 農家名;
    SELECT DATE_FORMAT(日時, '%Y') as Y, sum(金額), 農家名  FROM article7 GROUP by DATE_FORMAT(日時, '%Y'), 農家名
    SELECT DATE_FORMAT(日時, '%Y') as Y, sum(金額) FROM article7 GROUP by DATE_FORMAT(日時, '%Y');
+   SELECT * FROM article6 WHERE number LIKE "%1468%";
+   SELECT * FROM article6 WHERE number LIKE "%1144%" AND day >'2022-01-10 14:00:00'; 
+   SELECT * FROM article6 WHERE day > (NOW() - INTERVAL 3 MONTH);
+   

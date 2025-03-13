@@ -3,7 +3,7 @@ import pyodbc
 # データベースに接続します
 conn_str = (
     r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
-    r'DBQ=C:\Users\tsuboi\OneDrive\Documents\カルテ.mdb;'
+    r'DBQ=C:\Users\josej\OneDrive\Documents\カルテ.mdb;'
     )
 conn = pyodbc.connect(conn_str)
 cursor = conn.cursor()

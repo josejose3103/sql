@@ -47,7 +47,7 @@ width, height = A4
 c.setFont("Meiryo", 14)
 
 # タイトル
-c.drawString(50, height - 50, f"保険外診療集計表 ({start_date} 〜 {end_date})")
+c.drawString(50, height - 50, f"保険診療集計表 ({start_date} 〜 {end_date})")
 
 # ヘッダー
 c.setFont("Meiryo", 12)

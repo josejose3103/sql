@@ -22,7 +22,7 @@ cursor = conn.cursor()
 
 # SQL実行
 query = """
- SELECT day, noukamei, kingaku 
+ SELECT day, noukamei, kingaku, byoumei
  FROM article1 
  WHERE day BETWEEN %s AND %s AND kumikan = %s; 
 """
@@ -59,7 +59,7 @@ pdf.drawString(100, 780, "番号    病名    金額")
 # データを書き込み
 y_position = 760  # 初期Y位置
 for row in rows:
-    number, byoumei, kingaku = row
+    number, byoumei, kingaku, byoumei = row
     pdf.drawString(100, y_position, f"{number}    {byoumei}    {kingaku}円")
     y_position -= 20  # 1行下げる
 

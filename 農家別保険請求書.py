@@ -51,12 +51,15 @@ def format_currency(value):
 total_amount_f = format_currency(total_amount)
 tax_excluded_f = format_currency(tax_excluded)
 tax_f = format_currency(tax)
-
+#import os
 # 今日の日付
-today = datetime.date.today().strftime("%Y/%m/%d")
-
+today = datetime.date.today().strftime("%Y%m%d")
+# 保存先ディレクトリ
+save_dir = r"C:\Users\josej\OneDrive\Documents\pdf領収書"
 # ✅ PDFを作成
-pdf_filename = "invoice.pdf"
+#pdf_filename = "invoice.pdf"
+# PDFファイル名（農家名_出力日.pdf）
+pdf_filename = f"{farmer_name}_{today}.pdf"
 c = canvas.Canvas(pdf_filename, pagesize=A4)
 width, height = A4
 
@@ -138,4 +141,10 @@ c.save()
 
 # ✅ 結果を表示
 print(f"PDFファイル '{pdf_filename}' を作成しました。")
+#PDFファイル名（農家名_出力日.pdf）
+#import os
+
+# 今日の日付
+#today = datetime.date.today().strftime("%Y%m%d")  # YYYYMMDD形式
+#pdf_filename = f"{farmer_name}_{today}.pdf"
 input("Press Enter to exit...")

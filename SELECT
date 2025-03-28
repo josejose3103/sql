@@ -1,0 +1,9 @@
+SELECT 
+    IIf(DAY(日付) BETWEEN 11 AND 25, '11-25', '26-10') AS period,
+    YEAR(日付) AS year,
+    IIf(DAY(日付) BETWEEN 11 AND 25, MONTH(日付), MONTH(DATEADD('m', 1, 日付))) AS month,
+    SUM(amount) AS total_sales
+FROM 平成１５年
+WHERE 日付 >= #2024-01-01#  -- 必要に応じて調整
+GROUP BY YEAR(日付), IIf(DAY(日付) BETWEEN 11 AND 25, MONTH(日付), MONTH(DATEADD('m', 1, 日付))), IIf(DAY(日付) BETWEEN 11 AND 25, '11-25', '26-10')
+ORDER BY year, month, period;

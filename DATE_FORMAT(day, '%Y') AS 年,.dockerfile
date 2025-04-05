@@ -1,0 +1,8 @@
+DATE_FORMAT(day, '%Y') AS 年,
+    EXTRACT(YEAR FROM day) AS 年,
+    SUM(kingaku) AS 合計
+FROM article3 
+WHERE EXTRACT(MONTH FROM day) = 4
+  AND EXTRACT(DAY FROM day) BETWEEN 1 AND 4
+GROUP BY 年
+ORDER BY 年;

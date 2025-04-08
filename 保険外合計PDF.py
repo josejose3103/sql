@@ -31,7 +31,7 @@ conn_str = (
 conn = pyodbc.connect(conn_str)
 
 # SQLクエリ実行
-sql = "SELECT フィールド４, sum(フィールド3) FROM 保険外　薬品 WHERE フィールド1 BETWEEN #2025/02/01# AND #2025/03/31# GROUP BY フィールド４"
+sql = "SELECT フィールド４, sum(フィールド3) FROM 保険外　薬品 WHERE フィールド1 BETWEEN #2025/04/01# AND #2025/05/31# GROUP BY フィールド４"
 df = pd.read_sql(sql, conn)
 
 # 列名を設定
@@ -62,7 +62,7 @@ normal_style = ParagraphStyle(
 
 # タイトルと期間
 elements.append(Paragraph("保険外合計請求書", title_style))
-elements.append(Paragraph("期間: 2025年2月1日 ～ 2025年3月31日", normal_style))
+elements.append(Paragraph("期間: 2025年4月1日 ～ 2025年5月31日", normal_style))
 elements.append(Spacer(1, 20))
 
 # 「船坂昭美」と「渋谷敦士」を除外
@@ -101,6 +101,17 @@ elements.append(table)
 # PDF生成
 doc.build(elements)
 print(f"PDFファイルが正常に作成されました: {pdf_filename}")
+# 保存先ディレクトリを設定
+output_dir = "C:/Users/josej/OneDrive/Documents/pdf領収書"
 
+# ディレクトリが存在しない場合は作成
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+
+# PDFファイルを保存先ディレクトリに移動
+output_path = os.path.join(output_dir, pdf_filename)
+os.rename(pdf_filename, output_path)
+
+print(f"PDFファイルが正常に保存されました: {output_path}")
 # 接続を閉じる
 conn.close()

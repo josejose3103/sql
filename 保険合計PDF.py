@@ -7,6 +7,7 @@ from reportlab.lib import colors
 from reportlab.platypus import Table, TableStyle
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
+import os
 
 # 📅 今日の日付を取得（YYYYMMDD 形式）
 today_str = datetime.datetime.today().strftime("%Y%m%d")
@@ -15,9 +16,11 @@ today_str = datetime.datetime.today().strftime("%Y%m%d")
 font_path = "C:/Windows/Fonts/meiryo.ttc"
 pdfmetrics.registerFont(TTFont("Meiryo", font_path))
 
-# ユーザーから日付範囲を入力
-start_date = input("開始日を入力 (YYYY-MM-DD): ")
-end_date = input("終了日を入力 (YYYY-MM-DD): ")
+# ユーザーから日付範囲を入力 (YYYY/MM/DD形式)
+start_date = input("開始日を入力 (YYYY/MM/DD): ").replace("/", "-")
+end_date = input("終了日を入力 (YYYY/MM/DD): ").replace("/", "-")
+#start_date = input("開始日を入力 (YYYY-MM-DD): ")
+#end_date = input("終了日を入力 (YYYY-MM-DD): ")
 
 # データベース接続
 conn_str = (
@@ -97,9 +100,19 @@ table.setStyle(TableStyle([
 # 表を配置
 table.wrapOn(pdf, 50, 500)
 table.drawOn(pdf, 50, y_position - len(df) * 20)
+# 保存先ディレクトリを指定
+output_dir = "C:/Users/josej/OneDrive/Documents/pdf領収書"
+os.makedirs(output_dir, exist_ok=True)  # ディレクトリが存在しない場合は作成
+
+# 保存先パスを設定
+pdf_filepath = os.path.join(output_dir, pdf_filename)
 
 # PDFを保存
+pdf.saveState()
 pdf.save()
+os.rename(pdf_filename, pdf_filepath)
+# PDFを保存
+#pdf.save()
 
 # 接続を閉じる
 cursor.close()

@@ -9,7 +9,7 @@ conn = pyodbc.connect(conn_str)
 cursor = conn.cursor()
 
 # ユーザーから入力を取得
-フィールド1 = input("日付を入力してください (YYYY-MM-DD): ")
+フィールド1 = input("日付を入力してください (YYYY/MM/DD): ")
 フィールド2 = input("診療損害防止等の内容を入力してください: ")
 フィールド3 = input("金額を入力してください: ")
 フィールド4 = input("農家名を入力してください: ")

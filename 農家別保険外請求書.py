@@ -110,7 +110,11 @@ def export_to_pdf(df, filename="保険外請求書.pdf"):
     elements.append(payment_info)
     
     doc.build(elements)
-
+    # 保存先のパスを指定
+    output_path = r"C:\Users\josej\OneDrive\Documents\pdf領収書\保険外請求書.pdf"
+    export_to_pdf(df, filename=output_path)
+    print(f"PDFファイル '{output_path}' を作成しました。")
+    #output_path = r"C:\Users\josej\OneDrive\Documents\pdf領収書\保険外請求書.pdf"
 # PDFファイルに保存
-export_to_pdf(df)
-print("PDFファイル '保険外請求書.pdf' を作成しました。")
+#export_to_pdf(df)
+#print("PDFファイル '保険外請求書.pdf' を作成しました。")

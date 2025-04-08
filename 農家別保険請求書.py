@@ -5,6 +5,7 @@ from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
+import os
 
 # ✅ 日本語フォントを登録
 pdfmetrics.registerFont(TTFont('MSGothic', 'C:/Windows/Fonts/msgothic.ttc'))  # Windows用
@@ -140,6 +141,12 @@ c.drawRightString(width - 50, y_position, "代表取締役 坪井 聡之")  # �
 c.save()
 
 # ✅ 結果を表示
+# 保存先ディレクトリにPDFを移動
+if not os.path.exists(save_dir):
+    os.makedirs(save_dir)  # ディレクトリが存在しない場合は作成
+pdf_path = os.path.join(save_dir, pdf_filename)
+os.rename(pdf_filename, pdf_path)  # PDFを保存先ディレクトリに移動
+#print(f"PDFファイル '{pdf_path}' を作成しました。")
 print(f"PDFファイル '{pdf_filename}' を作成しました。")
 #PDFファイル名（農家名_出力日.pdf）
 #import os

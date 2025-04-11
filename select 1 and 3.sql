@@ -16,7 +16,7 @@ LEFT JOIN
 ON
     t1.noukamei = t2.noukamei
     AND t1.day = t2.day
-WHERE
+
     t1.noukamei = '坂上孝行'
     AND t1.day BETWEEN '2024-03-26' AND '2024-04-10';
     
